@@ -1,0 +1,32 @@
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\Main Project.exe.config
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\Main Project.exe
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\Main Project.pdb
+C:\Users\HP\Desktop\Mid Project\Main Project\obj\Debug\Main Project.csproj.AssemblyReference.cache
+C:\Users\HP\Desktop\Mid Project\Main Project\obj\Debug\Main_Project.Form1.resources
+C:\Users\HP\Desktop\Mid Project\Main Project\obj\Debug\Main_Project.Properties.Resources.resources
+C:\Users\HP\Desktop\Mid Project\Main Project\obj\Debug\Main Project.csproj.GenerateResource.cache
+C:\Users\HP\Desktop\Mid Project\Main Project\obj\Debug\Main Project.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\Mid Project\Main Project\obj\Debug\Main Project.exe
+C:\Users\HP\Desktop\Mid Project\Main Project\obj\Debug\Main Project.pdb
+C:\Users\HP\Desktop\Mid Project\Main Project\obj\Debug\Main_Project.Student.AddStudent.resources
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalReport1.rpt
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalReport1.cs
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalDecisions.ReportSource.dll
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalDecisions.Shared.dll
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalDecisions.Windows.Forms.dll
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\stdole.dll
+C:\Users\HP\Desktop\Mid Project\Main Project\obj\Debug\Main Project.csproj.CopyComplete
+C:\Users\HP\Desktop\Mid Project\Main Project\obj\Debug\Main_Project.Student.UpdateStudent.resources
