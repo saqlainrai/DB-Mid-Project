@@ -1,5 +1,6 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using Main_Project.Student;
+using Main_Project.Assessment;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -139,6 +140,21 @@ namespace Main_Project
         private void btnMain_Click(object sender, EventArgs e)
         {
             resetValues();
+        }
+
+        private void btnRubrics_Click(object sender, EventArgs e)
+        {
+            DisplayForm(new Attendance());
+        }
+
+        private void btnAddAssessment_Click(object sender, EventArgs e)
+        {
+            DisplayForm(new AddAssessment());
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            DisplayForm(new Reports());
         }
     }
 }

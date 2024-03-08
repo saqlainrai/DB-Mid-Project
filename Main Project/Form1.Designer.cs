@@ -134,6 +134,7 @@
             this.btnReports.Text = "Reports";
             this.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReports.UseVisualStyleBackColor = false;
+            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
             // btnRubrics
             // 
@@ -149,6 +150,7 @@
             this.btnRubrics.Text = "Rubrics";
             this.btnRubrics.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRubrics.UseVisualStyleBackColor = false;
+            this.btnRubrics.Click += new System.EventHandler(this.btnRubrics_Click);
             // 
             // btnAddAssessment
             // 
@@ -162,6 +164,7 @@
             this.btnAddAssessment.Text = "Add Assessment";
             this.btnAddAssessment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddAssessment.UseVisualStyleBackColor = false;
+            this.btnAddAssessment.Click += new System.EventHandler(this.btnAddAssessment_Click);
             // 
             // btnAssessment
             // 
