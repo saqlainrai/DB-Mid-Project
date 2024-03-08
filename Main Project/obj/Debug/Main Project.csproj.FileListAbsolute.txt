@@ -30,3 +30,5 @@ C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\CrystalDecisions.ReportAp
 C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\stdole.dll
 C:\Users\HP\Desktop\Mid Project\Main Project\obj\Debug\Main Project.csproj.CopyComplete
 C:\Users\HP\Desktop\Mid Project\Main Project\obj\Debug\Main_Project.Student.UpdateStudent.resources
+C:\Users\HP\Desktop\Mid Project\Main Project\obj\Debug\Main_Project.Student.DeleteStudent.resources
+C:\Users\HP\Desktop\Mid Project\Main Project\obj\Debug\Main_Project.CLO.AddCLO.resources

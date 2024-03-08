@@ -52,6 +52,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attendance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Attendance.Designer.cs">
+      <DependentUpon>Attendance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CLO\AddCLO.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CLO\AddCLO.Designer.cs">
+      <DependentUpon>AddCLO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CLO\DeleteCLO.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CLO\DeleteCLO.Designer.cs">
+      <DependentUpon>DeleteCLO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CLO\UpdateCLO.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CLO\UpdateCLO.Designer.cs">
+      <DependentUpon>UpdateCLO.cs</DependentUpon>
+    </Compile>
     <Compile Include="Configuration.cs" />
     <Compile Include="CrystalReport1.cs">
       <AutoGen>True</AutoGen>
@@ -74,12 +98,24 @@
     <Compile Include="Student\AddStudent.Designer.cs">
       <DependentUpon>AddStudent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Student\DeleteStudent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Student\DeleteStudent.Designer.cs">
+      <DependentUpon>DeleteStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Student\UpdateStudent.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Student\UpdateStudent.Designer.cs">
       <DependentUpon>UpdateStudent.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Attendance.resx">
+      <DependentUpon>Attendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CLO\AddCLO.resx">
+      <DependentUpon>AddCLO.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrystalReport1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.cs</LastGenOutput>
@@ -100,6 +136,9 @@
     <EmbeddedResource Include="Student\AddStudent.resx">
       <DependentUpon>AddStudent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Student\DeleteStudent.resx">
+      <DependentUpon>DeleteStudent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Student\UpdateStudent.resx">
       <DependentUpon>UpdateStudent.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,5 +158,6 @@
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

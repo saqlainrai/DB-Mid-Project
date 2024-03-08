@@ -57,6 +57,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(463, 44);
             this.dataGridView1.Name = "dataGridView1";
@@ -69,10 +70,10 @@
             // txtContact
             // 
             this.txtContact.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContact.Location = new System.Drawing.Point(214, 276);
+            this.txtContact.Location = new System.Drawing.Point(190, 276);
             this.txtContact.Margin = new System.Windows.Forms.Padding(4);
             this.txtContact.Name = "txtContact";
-            this.txtContact.Size = new System.Drawing.Size(213, 24);
+            this.txtContact.Size = new System.Drawing.Size(242, 24);
             this.txtContact.TabIndex = 71;
             // 
             // label1
@@ -88,10 +89,10 @@
             // txtLastName
             // 
             this.txtLastName.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLastName.Location = new System.Drawing.Point(214, 136);
+            this.txtLastName.Location = new System.Drawing.Point(190, 136);
             this.txtLastName.Margin = new System.Windows.Forms.Padding(4);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(213, 24);
+            this.txtLastName.Size = new System.Drawing.Size(242, 24);
             this.txtLastName.TabIndex = 69;
             // 
             // label2
@@ -107,10 +108,10 @@
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(214, 66);
+            this.txtName.Location = new System.Drawing.Point(190, 66);
             this.txtName.Margin = new System.Windows.Forms.Padding(4);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(213, 24);
+            this.txtName.Size = new System.Drawing.Size(242, 24);
             this.txtName.TabIndex = 68;
             // 
             // label3
@@ -126,19 +127,19 @@
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(214, 206);
+            this.txtEmail.Location = new System.Drawing.Point(190, 206);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(213, 24);
+            this.txtEmail.Size = new System.Drawing.Size(242, 24);
             this.txtEmail.TabIndex = 70;
             // 
             // txtRegNo
             // 
             this.txtRegNo.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegNo.Location = new System.Drawing.Point(214, 346);
+            this.txtRegNo.Location = new System.Drawing.Point(190, 346);
             this.txtRegNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtRegNo.Name = "txtRegNo";
-            this.txtRegNo.Size = new System.Drawing.Size(213, 24);
+            this.txtRegNo.Size = new System.Drawing.Size(242, 24);
             this.txtRegNo.TabIndex = 72;
             // 
             // label5

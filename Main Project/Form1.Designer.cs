@@ -246,6 +246,7 @@
             this.btnDeleteStudent.Text = "Delete Student";
             this.btnDeleteStudent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDeleteStudent.UseVisualStyleBackColor = false;
+            this.btnDeleteStudent.Click += new System.EventHandler(this.btnDeleteStudent_Click);
             // 
             // btnUpdateStudent
             // 
@@ -309,6 +310,7 @@
             this.btnMain.TabIndex = 5;
             this.btnMain.Text = "Score Master";
             this.btnMain.UseVisualStyleBackColor = false;
+            this.btnMain.Click += new System.EventHandler(this.btnMain_Click);
             // 
             // Form1
             // 

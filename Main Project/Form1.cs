@@ -18,6 +18,10 @@ namespace Main_Project
         public Form1()
         {
             InitializeComponent();
+            resetValues();
+        }
+        private void resetValues()
+        {
             btnAddStudent.Visible = false;
             btnUpdateStudent.Visible = false;
             btnDeleteStudent.Visible = false;
@@ -25,8 +29,8 @@ namespace Main_Project
             btnUpdateCLO.Visible = false;
             btnDeleteCLO.Visible = false;
             btnAddAssessment.Visible = false;
+            panel_data.Controls.Clear();
         }
-
         private void btnStudent_Click(object sender, EventArgs e)
         {
             if (btnAddStudent.Visible)
@@ -127,5 +131,14 @@ namespace Main_Project
             //crystalReportViewer1.ReportSource = r;
         }
 
+        private void btnDeleteStudent_Click(object sender, EventArgs e)
+        {
+            DisplayForm(new DeleteStudent());
+        }
+
+        private void btnMain_Click(object sender, EventArgs e)
+        {
+            resetValues();
+        }
     }
 }

@@ -21,31 +21,42 @@ namespace Main_Project.Student
 
         private void btnUpdateData_Click(object sender, EventArgs e)
         {
-            int rowIndex = -1;  
-            rowIndex = dataGridView1.SelectedRows[0].Index;
-            if (rowIndex >= 0)
+            //int rowIndex = -1;  
+            //rowIndex = dataGridView1.SelectedRows[0].Index;
+            //if (rowIndex >= 0)
+            if (dataGridView1.SelectedRows.Count > 0)
             {
-                string name = (string)txtName.Text;
-                string lastname = (string)txtLastName.Text;
-                string email = (string)txtEmail.Text;
-                string contact = (string)txtContact.Text;
-                string regno = (string)txtRegNo.Text;
+                if (dataGridView1.SelectedRows.Count == 1)
+                {
+                    string name = (string)txtName.Text;
+                    string lastname = (string)txtLastName.Text;
+                    string email = (string)txtEmail.Text;
+                    string contact = (string)txtContact.Text;
+                    string regno = (string)txtRegNo.Text;
 
-                var con = Configuration.getInstance().getConnection();
-                SqlCommand cmd = new SqlCommand("Insert into Student values (@FirstName, @LastName, @Contact, @Email, @RegistrationNumber, @Status)", con);
-                cmd.Parameters.AddWithValue("@FirstName", name);
-                cmd.Parameters.AddWithValue("@LastName", lastname);
-                cmd.Parameters.AddWithValue("@Contact", contact);
-                cmd.Parameters.AddWithValue("@Email", email);
-                cmd.Parameters.AddWithValue("@RegistrationNumber", regno);
-                cmd.Parameters.AddWithValue("@Status", 1);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Successfully Updated");
-                reloadData();
+                    string id = dataGridView1.CurrentRow.Cells["Id"].Value.ToString();
+
+                    var con = Configuration.getInstance().getConnection();
+                    SqlCommand cmd = new SqlCommand("UPDATE Student SET FirstName = @FirstName, LastName = @LastName, Contact = @Contact, Email = @Email, RegistrationNumber = @RegistrationNumber WHERE ID = @ID", con);
+                    cmd.Parameters.AddWithValue("@FirstName", name);
+                    cmd.Parameters.AddWithValue("@LastName", lastname);
+                    cmd.Parameters.AddWithValue("@Contact", contact);
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@RegistrationNumber", regno);
+                    cmd.Parameters.AddWithValue("@Status", 1);
+                    cmd.Parameters.AddWithValue("@ID", id);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Successfully Updated");
+                    reloadData();
+                }
+                else
+                {
+                    MessageBox.Show("You can Update only 1 row at a time!!!");
+                }
             }
             else
             {
-                MessageBox.Show("No Row is Selected!!!");
+                MessageBox.Show("No row is selected!!!");
             }
         }
 
@@ -61,15 +72,23 @@ namespace Main_Project.Student
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (dataGridView1.SelectedRows.Count == 1)
             {
                 int rowIndex = dataGridView1.SelectedRows[0].Index;
-                //int selectedID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["RegistrationNumber"].Value);
-                MessageBox.Show("RowIndex = @rowIndex \n RegistrationNumber ");
+                string fname = dataGridView1.CurrentRow.Cells["FirstName"].Value.ToString();
+                string lname = dataGridView1.CurrentRow.Cells["LastName"].Value.ToString();
+                string email = dataGridView1.CurrentRow.Cells["Email"].Value.ToString();
+                string cno = dataGridView1.CurrentRow.Cells["Contact"].Value.ToString();
+                string rgno = dataGridView1.CurrentRow.Cells["RegistrationNumber"].Value.ToString();
+                txtName.Text = fname;
+                txtLastName.Text = lname;
+                txtEmail.Text = email;
+                txtContact.Text = cno;
+                txtRegNo.Text = rgno;
             }
             else
             {
-                // No row is selected
+                // More then 1 row selected
             }
         }
     }

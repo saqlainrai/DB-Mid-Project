@@ -56,6 +56,7 @@ SELECT column1, column2, column3
 FROM table1
 WHERE condition;
 
+SELECT * FROM Student
 SELECT * FROM Clo
 
 INSERT INTO Assessment VALUES('Mid-Exams', '2024-02-28', 30, 30);
@@ -68,4 +69,31 @@ INSERT INTO Assessment VALUES('Quiz4', '2024-02-28', 10, 10);
 INSERT INTO Clo VALUES('CLO1', '2024-02-28', '2024-02-28');
 INSERT INTO Clo VALUES('CLO2', '2024-02-28', '2024-02-28');
 INSERT INTO Clo VALUES('CLO3', '2024-02-28', '2024-02-28');
+
+UPDATE Student
+SET FirstName = 'NewFirstName', LastName = 'NewLastName', RegistrationNumber = 'NewRegistrationNumber'
+WHERE FirstName = 'Saqlain' AND  LastName = 'Mansab' AND RegistrationNumber = '2022-CS-80';
+
+
+UPDATE Student
+SET Status = 6
+--WHERE Status = 6
+where RegistrationNumber > '2022-CS-60'
+
+select * from StudentAttendance
+select * from ClassAttendance
+select * from student
+
+
+SELECT sa.AttendanceId, AttendanceDate, l.Name AS Status, sa.StudentId, CONCAT(FirstName, ' ', LastName) AS Name, Email, RegistrationNumber
+FROM StudentAttendance sa
+INNER JOIN Student s
+ON sa.StudentId = s.Id
+INNER JOIN ClassAttendance ca
+ON ca.Id = sa.AttendanceId
+INNER JOIN Lookup l
+ON l.LookupId = sa.AttendanceStatus
+WHERE s.Id = 1005
+
+select * from StudentAttendance
 
