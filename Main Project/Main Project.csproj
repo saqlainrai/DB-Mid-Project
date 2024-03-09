@@ -193,6 +193,12 @@
     <Compile Include="Reports.Designer.cs">
       <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
+    <Compile Include="Rubrics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Rubrics.Designer.cs">
+      <DependentUpon>Rubrics.cs</DependentUpon>
+    </Compile>
     <Compile Include="Student\AddStudent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -239,6 +245,9 @@
     </Compile>
     <EmbeddedResource Include="Reports.resx">
       <DependentUpon>Reports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rubrics.resx">
+      <DependentUpon>Rubrics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Student\AddStudent.resx">
       <DependentUpon>AddStudent.cs</DependentUpon>

@@ -40,6 +40,9 @@
             this.txtRegNo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.radioActive = new System.Windows.Forms.RadioButton();
+            this.radioInActive = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,20 +60,25 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(463, 44);
+            this.dataGridView1.Location = new System.Drawing.Point(463, 38);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(523, 368);
+            this.dataGridView1.Size = new System.Drawing.Size(523, 418);
             this.dataGridView1.TabIndex = 73;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // txtContact
             // 
             this.txtContact.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContact.Location = new System.Drawing.Point(190, 276);
+            this.txtContact.Location = new System.Drawing.Point(190, 270);
             this.txtContact.Margin = new System.Windows.Forms.Padding(4);
             this.txtContact.Name = "txtContact";
             this.txtContact.Size = new System.Drawing.Size(242, 24);
@@ -89,7 +97,7 @@
             // txtLastName
             // 
             this.txtLastName.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLastName.Location = new System.Drawing.Point(190, 136);
+            this.txtLastName.Location = new System.Drawing.Point(190, 134);
             this.txtLastName.Margin = new System.Windows.Forms.Padding(4);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(242, 24);
@@ -98,7 +106,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(26, 136);
+            this.label2.Location = new System.Drawing.Point(26, 133);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(163, 31);
@@ -117,7 +125,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(26, 207);
+            this.label3.Location = new System.Drawing.Point(26, 201);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(163, 31);
@@ -127,7 +135,7 @@
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(190, 206);
+            this.txtEmail.Location = new System.Drawing.Point(190, 202);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(242, 24);
@@ -136,7 +144,7 @@
             // txtRegNo
             // 
             this.txtRegNo.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegNo.Location = new System.Drawing.Point(190, 346);
+            this.txtRegNo.Location = new System.Drawing.Point(190, 338);
             this.txtRegNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtRegNo.Name = "txtRegNo";
             this.txtRegNo.Size = new System.Drawing.Size(242, 24);
@@ -145,7 +153,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(26, 349);
+            this.label5.Location = new System.Drawing.Point(26, 337);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(163, 31);
@@ -155,18 +163,53 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(26, 278);
+            this.label4.Location = new System.Drawing.Point(26, 269);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(163, 31);
             this.label4.TabIndex = 65;
             this.label4.Text = "Contact";
             // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(26, 401);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(152, 31);
+            this.label6.TabIndex = 75;
+            this.label6.Text = "Status";
+            // 
+            // radioActive
+            // 
+            this.radioActive.AutoSize = true;
+            this.radioActive.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioActive.Location = new System.Drawing.Point(198, 400);
+            this.radioActive.Name = "radioActive";
+            this.radioActive.Size = new System.Drawing.Size(95, 27);
+            this.radioActive.TabIndex = 76;
+            this.radioActive.Text = "Active";
+            this.radioActive.UseVisualStyleBackColor = true;
+            // 
+            // radioInActive
+            // 
+            this.radioInActive.AutoSize = true;
+            this.radioInActive.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioInActive.Location = new System.Drawing.Point(319, 399);
+            this.radioInActive.Name = "radioInActive";
+            this.radioInActive.Size = new System.Drawing.Size(119, 27);
+            this.radioInActive.TabIndex = 77;
+            this.radioInActive.Text = "In-Active";
+            this.radioInActive.UseVisualStyleBackColor = true;
+            // 
             // UpdateStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.Controls.Add(this.radioInActive);
+            this.Controls.Add(this.radioActive);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnUpdateData);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txtContact);
@@ -180,7 +223,8 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Name = "UpdateStudent";
-            this.Size = new System.Drawing.Size(1013, 569);
+            this.Size = new System.Drawing.Size(1013, 546);
+            this.Load += new System.EventHandler(this.UpdateStudent_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -201,5 +245,8 @@
         private System.Windows.Forms.TextBox txtRegNo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.RadioButton radioActive;
+        private System.Windows.Forms.RadioButton radioInActive;
     }
 }

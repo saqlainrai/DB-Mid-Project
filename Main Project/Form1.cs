@@ -156,5 +156,10 @@ namespace Main_Project
         {
             DisplayForm(new Attendance());
         }
+
+        private void btnRubrics_Click(object sender, EventArgs e)
+        {
+            DisplayForm(new Rubrics());
+        }
     }
 }

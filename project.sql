@@ -76,7 +76,7 @@ WHERE FirstName = 'Saqlain' AND  LastName = 'Mansab' AND RegistrationNumber = '2
 
 
 UPDATE Student
-SET Status = 6
+SET Status = 5
 --WHERE Status = 6
 where RegistrationNumber > '2022-CS-60'
 
@@ -116,26 +116,6 @@ ON ca.Id = sa.AttendanceId
 INNER JOIN Lookup l
 ON l.LookupId = sa.AttendanceStatus
 WHERE s.Id = 2024
-
-
-
-
-
---Assessment Report
-SELECT TT.StudentName,TT.Assessment,SUM(TT.[Obtained Marks]) 'ObtainedTotal', CAST((SUM(TT.[Obtained Marks])* TT.TotalWeightage / SUM(TT.TotalMarks)) AS DECIMAL(16,2)) WeightedMarks
-FROM(SELECT CONCAT(S.FirstName,' ',S.LastName) FROM Student S WHERE S.Id = SR.StudentID) StudentName, CONCAT(C.Id,'-',C.Name) [CLO Title],CONVERT(date,SR.EvaluationDate) [Evaluation Date], A.Title Assessment, 
-AC.Name as Component,AC.TotalMarks, RL.MeasurementLevel [Examiners Measure], (SELECT MAX (RLP.MeasurementLevel) FROM RubricLevel RLP WHERE RLP.RubricId = R.Id) as [Max Measure], CAST(((CAST(RL.MeasurementLevel AS FLOAT) / CAST ((SELECT MAX( RLP.MeasurementLevel ) FROM RubricLevel RLP
-WHERE RLP.RubricId = R.Id) AS FLOAT))) * CAST(AC.TotalMarks AS FLOAT) AS DECIMAL(16,2)) 'Obtained Marks', A.TotalWeightage
-FROM Assessment A
-JOIN AssessmentComponent AC ON AC.AssessmentId = A.Id
-JOIN StudentResult SR ON SR.AssessmentComponentId = AC.Id
-JOIN RubricLevel RL ON SR.RubricMeasurementId = RL.Id
-JOIN Rubric R ON RL.RubricId = R.Id
-JOIN Clo C ON R.CloId = C.Id
-GROUP BY A.Title, SR.StudentID,AC.Name,AC.TotalMarks,RL.Id, RL.MeasurementLevel, SR.RubricMeasurementId,R.Id,C.Name,C.Id,SR.EvaluationDate, A.TotalWeightage) TT
-GROUP BY TT.StudentName,TT.Assessment,TT.TotalWeightage;
-
-
 
 
 

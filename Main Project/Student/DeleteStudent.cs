@@ -60,6 +60,30 @@ namespace Main_Project.Student
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
+
+            dt.Columns.Remove("Status");
+            dt.Columns.Add("Status", typeof(bool));
+
+            cmd = new SqlCommand("SELECT Status FROM Student", con);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+            DataTable dt2 = new DataTable();
+            sqlDataAdapter.Fill(dt2);
+
+            dt2.Columns.Add("RowIndex", typeof(int));
+
+            // Populate the row index column in dt2
+            for (int i = 0; i < dt2.Rows.Count; i++)
+            {
+                dt2.Rows[i]["RowIndex"] = i;
+            }
+
+            // Populate the checkbox column based on the values in the DataTable
+            foreach (DataRow row in dt2.Rows)
+            {
+                int rowIndex = (int)row["RowIndex"];
+                bool checkboxValue = (int)row["Status"] == 5;
+                dt.Rows[rowIndex]["Status"] = checkboxValue;
+            }
             dataGridView1.DataSource = dt;
         }
     }

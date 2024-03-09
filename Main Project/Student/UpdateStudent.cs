@@ -33,17 +33,23 @@ namespace Main_Project.Student
                     string email = (string)txtEmail.Text;
                     string contact = (string)txtContact.Text;
                     string regno = (string)txtRegNo.Text;
+                    bool s = radioActive.Checked;
+                    int status = 6;
+                    if (s)
+                    {
+                        status = 5;
+                    }
 
                     string id = dataGridView1.CurrentRow.Cells["Id"].Value.ToString();
 
                     var con = Configuration.getInstance().getConnection();
-                    SqlCommand cmd = new SqlCommand("UPDATE Student SET FirstName = @FirstName, LastName = @LastName, Contact = @Contact, Email = @Email, RegistrationNumber = @RegistrationNumber WHERE ID = @ID", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE Student SET FirstName = @FirstName, LastName = @LastName, Contact = @Contact, Email = @Email, RegistrationNumber = @RegistrationNumber, Status = @Status WHERE ID = @ID", con);
                     cmd.Parameters.AddWithValue("@FirstName", name);
                     cmd.Parameters.AddWithValue("@LastName", lastname);
                     cmd.Parameters.AddWithValue("@Contact", contact);
                     cmd.Parameters.AddWithValue("@Email", email);
                     cmd.Parameters.AddWithValue("@RegistrationNumber", regno);
-                    cmd.Parameters.AddWithValue("@Status", 1);
+                    cmd.Parameters.AddWithValue("@Status", status);
                     cmd.Parameters.AddWithValue("@ID", id);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Successfully Updated");
@@ -69,16 +75,28 @@ namespace Main_Project.Student
             da.Fill(dt);
 
             dt.Columns.Remove("Status");
-            // Add a new column for the checkbox
             dt.Columns.Add("Status", typeof(bool));
 
-            // Populate the checkbox column based on the values in the DataTable
-            foreach (DataRow row in dt.Rows)
+            cmd = new SqlCommand("SELECT Status FROM Student", con);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+            DataTable dt2 = new DataTable();
+            sqlDataAdapter.Fill(dt2);   
+
+            dt2.Columns.Add("RowIndex", typeof(int));
+
+            // Populate the row index column in dt2
+            for (int i = 0; i < dt2.Rows.Count; i++)
             {
-                object value = row["Status"];
-                row["Status"] = value != DBNull.Value && (int)value == 5;
+                dt2.Rows[i]["RowIndex"] = i;
             }
 
+            // Populate the checkbox column based on the values in the DataTable
+            foreach (DataRow row in dt2.Rows)
+            {
+                int rowIndex = (int)row["RowIndex"];
+                bool checkboxValue = (int)row["Status"] == 5;
+                dt.Rows[rowIndex]["Status"] = checkboxValue;
+            }
             dataGridView1.DataSource = dt;
         }
 
@@ -92,16 +110,32 @@ namespace Main_Project.Student
                 string email = dataGridView1.CurrentRow.Cells["Email"].Value.ToString();
                 string cno = dataGridView1.CurrentRow.Cells["Contact"].Value.ToString();
                 string rgno = dataGridView1.CurrentRow.Cells["RegistrationNumber"].Value.ToString();
+                string status = dataGridView1.CurrentRow.Cells["Status"].Value.ToString();
                 txtName.Text = fname;
                 txtLastName.Text = lname;
                 txtEmail.Text = email;
                 txtContact.Text = cno;
                 txtRegNo.Text = rgno;
-            }
+                if (status == "True")
+                {
+                    radioActive.Checked = true;
+                    radioInActive.Checked = false;
+                }
+                else
+                {
+                    radioInActive.Checked = true;
+                    radioActive.Checked = false;
+                }
+            }   
             else
             {
                 // More then 1 row selected
             }
+        }
+
+        private void UpdateStudent_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
