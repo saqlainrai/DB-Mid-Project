@@ -18,12 +18,6 @@ namespace Main_Project.Student
         public AddStudent()
         {
             InitializeComponent();
-            //string fileName = PdfGenerator.ShowInputDialog("Enter file name: ", "File Name Input");
-
-            //if (!string.IsNullOrEmpty(fileName))
-            //{
-            //    MessageBox.Show($"You entered: {fileName}", "File Name Result");
-            //}
             reloadData();
         }
         private void btnUpdateTable_Click(object sender, EventArgs e)
@@ -38,7 +32,6 @@ namespace Main_Project.Student
             DataTable dt = new DataTable();
             da.Fill(dt);
             dataGridView1.DataSource = dt;
-            PdfGenerator.PrintDataToDocument(dt, "report.pdf", "Student Details");
         }
         private void btnAddStudent_Click(object sender, EventArgs e)
         {

@@ -83,6 +83,28 @@ where RegistrationNumber > '2022-CS-60'
 select * from StudentAttendance
 select * from ClassAttendance
 select * from student
+select * from RubricLevel
+select * from Rubric
+select * from AssessmentComponent
+select * from Assessment
+
+SELECT Id, CONCAT(FirstName, ' ', LastName) AS Name, Contact, Email, RegistrationNumber FROM Student WHERE Status = 5;
+
+update assessment
+set TotalWeightage = 5
+where TotalMarks = 10
+	
+INSERT INTO ClassAttendance VALUES ('2024-03-06 00:00:00.000');
+SELECT Id FROM ClassAttendance WHERE AttendanceDate = '2024-03-06 00:00:00.000';
+INSERT INTO Rubric VALUES(1, 'Design', 2);
+INSERT INTO Rubric VALUES(2, 'Execution', 2);
+INSERT INTO Rubric VALUES(3, 'Testing', 2);
+
+INSERT INTO RubricLevel VALUES(1, 'Program should be properly decomposed in reusable components.', 4);
+
+UPDATE AssessmentComponent
+SET Name = 'NewIMP'
+WHERE Id = 1;
 
 
 SELECT sa.AttendanceId, AttendanceDate, l.Name AS Status, sa.StudentId, CONCAT(FirstName, ' ', LastName) AS Name, Email, RegistrationNumber
@@ -93,7 +115,69 @@ INNER JOIN ClassAttendance ca
 ON ca.Id = sa.AttendanceId
 INNER JOIN Lookup l
 ON l.LookupId = sa.AttendanceStatus
-WHERE s.Id = 1005
+WHERE s.Id = 2024
 
-select * from StudentAttendance
 
+
+
+
+--Assessment Report
+SELECT TT.StudentName,TT.Assessment,SUM(TT.[Obtained Marks]) 'ObtainedTotal', CAST((SUM(TT.[Obtained Marks])* TT.TotalWeightage / SUM(TT.TotalMarks)) AS DECIMAL(16,2)) WeightedMarks
+FROM(SELECT CONCAT(S.FirstName,' ',S.LastName) FROM Student S WHERE S.Id = SR.StudentID) StudentName, CONCAT(C.Id,'-',C.Name) [CLO Title],CONVERT(date,SR.EvaluationDate) [Evaluation Date], A.Title Assessment, 
+AC.Name as Component,AC.TotalMarks, RL.MeasurementLevel [Examiners Measure], (SELECT MAX (RLP.MeasurementLevel) FROM RubricLevel RLP WHERE RLP.RubricId = R.Id) as [Max Measure], CAST(((CAST(RL.MeasurementLevel AS FLOAT) / CAST ((SELECT MAX( RLP.MeasurementLevel ) FROM RubricLevel RLP
+WHERE RLP.RubricId = R.Id) AS FLOAT))) * CAST(AC.TotalMarks AS FLOAT) AS DECIMAL(16,2)) 'Obtained Marks', A.TotalWeightage
+FROM Assessment A
+JOIN AssessmentComponent AC ON AC.AssessmentId = A.Id
+JOIN StudentResult SR ON SR.AssessmentComponentId = AC.Id
+JOIN RubricLevel RL ON SR.RubricMeasurementId = RL.Id
+JOIN Rubric R ON RL.RubricId = R.Id
+JOIN Clo C ON R.CloId = C.Id
+GROUP BY A.Title, SR.StudentID,AC.Name,AC.TotalMarks,RL.Id, RL.MeasurementLevel, SR.RubricMeasurementId,R.Id,C.Name,C.Id,SR.EvaluationDate, A.TotalWeightage) TT
+GROUP BY TT.StudentName,TT.Assessment,TT.TotalWeightage;
+
+
+
+
+
+SELECT
+    TT.StudentName,
+    TT.Assessment,
+    SUM(TT.[Obtained Marks]) AS ObtainedTotal,
+    CAST((SUM(TT.[Obtained Marks]) * TT.TotalWeightage / SUM(TT.TotalMarks)) AS DECIMAL(16, 2)) AS WeightedMarks
+FROM
+    (SELECT
+        --CONCAT(S.FirstName, ' ', S.LastName) AS StudentName,
+        CONCAT(C.Id, '-', C.Name) AS [CLO Title],
+        CONVERT(DATE, SR.EvaluationDate) AS [Evaluation Date],
+        A.Title AS Assessment,
+        AC.Name AS Component,
+        AC.TotalMarks,
+        RL.MeasurementLevel AS [Examiners Measure],
+        (SELECT MAX(RLP.MeasurementLevel) FROM RubricLevel RLP WHERE RLP.RubricId = R.Id) AS [Max Measure],
+        CAST(((CAST(RL.MeasurementLevel AS FLOAT) / CAST((SELECT MAX(RLP.MeasurementLevel) FROM RubricLevel RLP WHERE RLP.RubricId = R.Id) AS FLOAT))) * CAST(AC.TotalMarks AS FLOAT) AS DECIMAL(16, 2)) AS [Obtained Marks],
+        A.TotalWeightage
+    FROM
+        Assessment A
+		JOIN Student S ON S.Id = A.Id
+        JOIN AssessmentComponent AC ON AC.AssessmentId = A.Id
+        JOIN StudentResult SR ON SR.AssessmentComponentId = AC.Id
+        JOIN RubricLevel RL ON SR.RubricMeasurementId = RL.Id
+        JOIN Rubric R ON RL.RubricId = R.Id
+        JOIN Clo C ON R.CloId = C.Id
+    GROUP BY
+        A.Title,
+        SR.StudentID,
+        AC.Name,
+        AC.TotalMarks,
+        RL.Id,
+        RL.MeasurementLevel,
+        SR.RubricMeasurementId,
+        R.Id,
+        C.Name,
+        C.Id,
+        SR.EvaluationDate,
+        A.TotalWeightage) TT
+GROUP BY
+    --TT.StudentName,
+    TT.Assessment,
+    TT.TotalWeightage;

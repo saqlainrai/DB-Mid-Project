@@ -142,11 +142,6 @@ namespace Main_Project
             resetValues();
         }
 
-        private void btnRubrics_Click(object sender, EventArgs e)
-        {
-            DisplayForm(new Attendance());
-        }
-
         private void btnAddAssessment_Click(object sender, EventArgs e)
         {
             DisplayForm(new AddAssessment());
@@ -155,6 +150,11 @@ namespace Main_Project
         private void btnReports_Click(object sender, EventArgs e)
         {
             DisplayForm(new Reports());
+        }
+
+        private void btnAttendance_Click(object sender, EventArgs e)
+        {
+            DisplayForm(new Attendance());
         }
     }
 }

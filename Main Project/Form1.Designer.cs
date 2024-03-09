@@ -34,7 +34,7 @@
             this.panelSide = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
-            this.btnRubrics = new System.Windows.Forms.Button();
+            this.btnAttendance = new System.Windows.Forms.Button();
             this.btnAddAssessment = new System.Windows.Forms.Button();
             this.btnAssessment = new System.Windows.Forms.Button();
             this.btnDeleteCLO = new System.Windows.Forms.Button();
@@ -88,7 +88,7 @@
             this.panelSide.AutoScroll = true;
             this.panelSide.Controls.Add(this.btnExit);
             this.panelSide.Controls.Add(this.btnReports);
-            this.panelSide.Controls.Add(this.btnRubrics);
+            this.panelSide.Controls.Add(this.btnAttendance);
             this.panelSide.Controls.Add(this.btnAddAssessment);
             this.panelSide.Controls.Add(this.btnAssessment);
             this.panelSide.Controls.Add(this.btnDeleteCLO);
@@ -136,21 +136,21 @@
             this.btnReports.UseVisualStyleBackColor = false;
             this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
-            // btnRubrics
+            // btnAttendance
             // 
-            this.btnRubrics.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnRubrics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnRubrics.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRubrics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRubrics.Location = new System.Drawing.Point(0, 500);
-            this.btnRubrics.Margin = new System.Windows.Forms.Padding(0);
-            this.btnRubrics.Name = "btnRubrics";
-            this.btnRubrics.Size = new System.Drawing.Size(242, 50);
-            this.btnRubrics.TabIndex = 7;
-            this.btnRubrics.Text = "Rubrics";
-            this.btnRubrics.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRubrics.UseVisualStyleBackColor = false;
-            this.btnRubrics.Click += new System.EventHandler(this.btnRubrics_Click);
+            this.btnAttendance.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAttendance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnAttendance.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAttendance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAttendance.Location = new System.Drawing.Point(0, 500);
+            this.btnAttendance.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAttendance.Name = "btnAttendance";
+            this.btnAttendance.Size = new System.Drawing.Size(242, 50);
+            this.btnAttendance.TabIndex = 7;
+            this.btnAttendance.Text = "Attendance";
+            this.btnAttendance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAttendance.UseVisualStyleBackColor = false;
+            this.btnAttendance.Click += new System.EventHandler(this.btnAttendance_Click);
             // 
             // btnAddAssessment
             // 
@@ -340,7 +340,7 @@
         private System.Windows.Forms.Panel panelSide;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnReports;
-        private System.Windows.Forms.Button btnRubrics;
+        private System.Windows.Forms.Button btnAttendance;
         private System.Windows.Forms.Button btnAddAssessment;
         private System.Windows.Forms.Button btnAssessment;
         private System.Windows.Forms.Button btnDeleteCLO;

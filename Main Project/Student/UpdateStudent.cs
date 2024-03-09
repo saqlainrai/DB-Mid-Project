@@ -67,6 +67,18 @@ namespace Main_Project.Student
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
+
+            dt.Columns.Remove("Status");
+            // Add a new column for the checkbox
+            dt.Columns.Add("Status", typeof(bool));
+
+            // Populate the checkbox column based on the values in the DataTable
+            foreach (DataRow row in dt.Rows)
+            {
+                object value = row["Status"];
+                row["Status"] = value != DBNull.Value && (int)value == 5;
+            }
+
             dataGridView1.DataSource = dt;
         }
 
