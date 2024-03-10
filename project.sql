@@ -87,8 +87,11 @@ select * from RubricLevel
 select * from Rubric
 select * from AssessmentComponent
 select * from Assessment
+select * from clo
 
 SELECT Id, CONCAT(FirstName, ' ', LastName) AS Name, Contact, Email, RegistrationNumber FROM Student WHERE Status = 5;
+
+DELETE FROM Rubric WHERE Id = 1;
 
 update assessment
 set TotalWeightage = 5

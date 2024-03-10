@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Main_Project.CLO;
 
 namespace Main_Project
 {
@@ -50,18 +51,19 @@ namespace Main_Project
 
         private void btnCLO_Click(object sender, EventArgs e)
         {
-            if (btnAddCLO.Visible)
-            {
-                btnAddCLO.Visible = false;
-                btnUpdateCLO.Visible = false;
-                btnDeleteCLO.Visible = false;
-            }
-            else
-            {
-                btnAddCLO.Visible = true;
-                btnUpdateCLO.Visible = true;
-                btnDeleteCLO.Visible = true;
-            }
+            //if (btnAddCLO.Visible)
+            //{
+            //    btnAddCLO.Visible = false;
+            //    btnUpdateCLO.Visible = false;
+            //    btnDeleteCLO.Visible = false;
+            //}
+            //else
+            //{
+            //    btnAddCLO.Visible = true;
+            //    btnUpdateCLO.Visible = true;
+            //    btnDeleteCLO.Visible = true;
+            //}
+            DisplayForm(new AddCLO());
         }
 
         private void btnAssessment_Click(object sender, EventArgs e)
