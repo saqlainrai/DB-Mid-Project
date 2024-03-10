@@ -115,7 +115,7 @@ INNER JOIN ClassAttendance ca
 ON ca.Id = sa.AttendanceId
 INNER JOIN Lookup l
 ON l.LookupId = sa.AttendanceStatus
-WHERE s.Id = 2024
+WHERE s.Id = 5001
 
 
 
@@ -161,3 +161,7 @@ GROUP BY
     --TT.StudentName,
     TT.Assessment,
     TT.TotalWeightage;
+
+BACKUP DATABASE tempdb
+TO DISK = 'C:\Users\HP\Desktop'
+WITH FORMAT, NAME = 'Full Database Backup';

@@ -50,7 +50,6 @@ https://www.overleaf.com/read/fzqmxqgngfkd#71bf8c)
 ### Terms and Conditions 
 Will be available soon.
 
-
 ```python
 def good_bye():
     print("Thank you, for visiting the Repo...")
