@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.clmStatus = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.btnSubmitAttendance = new System.Windows.Forms.Button();
             this.btnChooseDate = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btnPrintAttendance = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
-            this.clmStatus = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,6 +54,17 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(946, 484);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // clmStatus
+            // 
+            this.clmStatus.HeaderText = "Status";
+            this.clmStatus.Items.AddRange(new object[] {
+            "PRESENT",
+            "ABSENT",
+            "LEAVE",
+            "LATE"});
+            this.clmStatus.MinimumWidth = 6;
+            this.clmStatus.Name = "clmStatus";
             // 
             // btnSubmitAttendance
             // 
@@ -103,17 +114,6 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // clmStatus
-            // 
-            this.clmStatus.HeaderText = "Status";
-            this.clmStatus.Items.AddRange(new object[] {
-            "PRESENT",
-            "ABSENT",
-            "LEAVE",
-            "LATE"});
-            this.clmStatus.MinimumWidth = 6;
-            this.clmStatus.Name = "clmStatus";
-            // 
             // Attendance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -139,6 +139,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button btnPrintAttendance;
         private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.DataGridViewComboBoxColumn clmStatus;
+        public System.Windows.Forms.DataGridViewComboBoxColumn clmStatus;
     }
 }

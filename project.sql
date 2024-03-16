@@ -71,8 +71,8 @@ INSERT INTO Clo VALUES('CLO2', '2024-02-28', '2024-02-28');
 INSERT INTO Clo VALUES('CLO3', '2024-02-28', '2024-02-28');
 
 UPDATE Student
-SET FirstName = 'NewFirstName', LastName = 'NewLastName', RegistrationNumber = 'NewRegistrationNumber'
-WHERE FirstName = 'Saqlain' AND  LastName = 'Mansab' AND RegistrationNumber = '2022-CS-80';
+SET Status = 6
+WHERE RegistrationNumber > '2022-CS-65';
 
 
 UPDATE Student
@@ -81,13 +81,43 @@ SET Status = 5
 where RegistrationNumber > '2022-CS-60'
 
 select * from StudentAttendance
-select * from ClassAttendance
+SELECT * FROM ClassAttendance
 select * from student
 select * from RubricLevel
 select * from Rubric
 select * from AssessmentComponent
 select * from Assessment
 select * from clo
+select * from Lookup
+
+INSERT INTO ClassAttendance VALUES(GETDATE());
+
+DELETE FROM ClassAttendance WHERE Id = 2;
+TRUNCATE TABLE ClassAttendance
+
+-- Attendace Report for a Certain Date
+SELECT t1.Id AttendanceID, t1.AttendanceDate, t2.StudentId, CONCAT(s.FirstName, ' ', s.LastName) Name, l.Name Status, s.RegistrationNumber
+FROM
+	(SELECT * FROM ClassAttendance WHERE CONVERT(DATE, AttendanceDate) = '2024-03-16') t1
+JOIN StudentAttendance t2
+ON t1.Id = t2.AttendanceId
+JOIN Lookup l
+ON l.LookupId = t2.AttendanceStatus
+JOIN Student s
+ON s.Id = t2.StudentId
+
+
+--Attendance Report of a Certain Student
+SELECT s.Id, CONCAT(s.FirstName, ' ', s.LastName) Name, s.RegistrationNumber, CONVERT(DATE, c.AttendanceDate) Date, l.Name Status
+FROM Student s
+JOIN StudentAttendance a
+ON s.Id = a.StudentId
+JOIN Lookup l
+ON l.LookupId = a.AttendanceStatus
+JOIN ClassAttendance c
+ON c.Id = a.AttendanceId
+WHERE s.RegistrationNumber = '2022-CS-57'
+
 
 SELECT Id, CONCAT(FirstName, ' ', LastName) AS Name, Contact, Email, RegistrationNumber FROM Student WHERE Status = 5;
 
@@ -104,6 +134,10 @@ INSERT INTO Rubric VALUES(2, 'Execution', 2);
 INSERT INTO Rubric VALUES(3, 'Testing', 2);
 
 INSERT INTO RubricLevel VALUES(1, 'Program should be properly decomposed in reusable components.', 4);
+
+SELECT *
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'name2';
 
 UPDATE AssessmentComponent
 SET Name = 'NewIMP'

@@ -39,21 +39,68 @@ namespace Main_Project.Student
                     {
                         status = 5;
                     }
+                    if (name != "" && lastname != "")
+                    {
+                        if (email.EndsWith("@gmail.com") && email[0] != '@')
+                        {
+                            if (contact.Length == 10)
+                            {
+                                string id = dataGridView1.CurrentRow.Cells["Id"].Value.ToString();
+                                string oldReg = dataGridView1.CurrentRow.Cells["RegistrationNumber"].Value.ToString();
+                                var c = Configuration.getInstance().getConnection();
+                                SqlCommand cm = new SqlCommand("SELECT RegistrationNumber FROM Student", c);
+                                SqlDataAdapter d = new SqlDataAdapter(cm);
+                                DataTable dataTable = new DataTable();
+                                d.Fill(dataTable);
+                                List<string> columnEntries = new List<string>();
+                                foreach (DataRow row in dataTable.Rows)
+                                {
+                                    columnEntries.Add(row["RegistrationNumber"].ToString());
+                                }
+                                columnEntries.Remove(oldReg);
+                                bool flag = false;
+                                foreach (string column in columnEntries)
+                                {
+                                    if (column == regno)
+                                    {
+                                        flag = true;
+                                    }
+                                }
+                                if (flag == false && regno != "")
+                                {
 
-                    string id = dataGridView1.CurrentRow.Cells["Id"].Value.ToString();
-
-                    var con = Configuration.getInstance().getConnection();
-                    SqlCommand cmd = new SqlCommand("UPDATE Student SET FirstName = @FirstName, LastName = @LastName, Contact = @Contact, Email = @Email, RegistrationNumber = @RegistrationNumber, Status = @Status WHERE ID = @ID", con);
-                    cmd.Parameters.AddWithValue("@FirstName", name);
-                    cmd.Parameters.AddWithValue("@LastName", lastname);
-                    cmd.Parameters.AddWithValue("@Contact", contact);
-                    cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.Parameters.AddWithValue("@RegistrationNumber", regno);
-                    cmd.Parameters.AddWithValue("@Status", status);
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Successfully Updated");
-                    reloadData();
+                                    var con = Configuration.getInstance().getConnection();
+                                    SqlCommand cmd = new SqlCommand("UPDATE Student SET FirstName = @FirstName, LastName = @LastName, Contact = @Contact, Email = @Email, RegistrationNumber = @RegistrationNumber, Status = @Status WHERE ID = @ID", con);
+                                    cmd.Parameters.AddWithValue("@FirstName", name);
+                                    cmd.Parameters.AddWithValue("@LastName", lastname);
+                                    cmd.Parameters.AddWithValue("@Contact", contact);
+                                    cmd.Parameters.AddWithValue("@Email", email);
+                                    cmd.Parameters.AddWithValue("@RegistrationNumber", regno);
+                                    cmd.Parameters.AddWithValue("@Status", status);
+                                    cmd.Parameters.AddWithValue("@ID", id);
+                                    cmd.ExecuteNonQuery();
+                                    MessageBox.Show("Successfully Updated");
+                                    reloadData();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Please Enter a unique Registration Number");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Please Enter a 10-digit long Contact No. (except starting 0)");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please Enter a valid Email!!!\nNote: Only gmail's are accepted.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please Enter a valid Name!!!");
+                    }
                 }
                 else
                 {
@@ -80,7 +127,7 @@ namespace Main_Project.Student
             cmd = new SqlCommand("SELECT Status FROM Student", con);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
             DataTable dt2 = new DataTable();
-            sqlDataAdapter.Fill(dt2);   
+            sqlDataAdapter.Fill(dt2);
 
             dt2.Columns.Add("RowIndex", typeof(int));
 
@@ -126,7 +173,7 @@ namespace Main_Project.Student
                     radioInActive.Checked = true;
                     radioActive.Checked = false;
                 }
-            }   
+            }
             else
             {
                 // More then 1 row selected
