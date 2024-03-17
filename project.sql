@@ -116,7 +116,7 @@ JOIN Lookup l
 ON l.LookupId = a.AttendanceStatus
 JOIN ClassAttendance c
 ON c.Id = a.AttendanceId
-WHERE s.RegistrationNumber = '2022-CS-57'
+WHERE s.RegistrationNumber = '2022-CS-57';
 
 
 SELECT Id, CONCAT(FirstName, ' ', LastName) AS Name, Contact, Email, RegistrationNumber FROM Student WHERE Status = 5;
@@ -155,50 +155,48 @@ ON l.LookupId = sa.AttendanceStatus
 WHERE s.Id = 5001
 
 
+SELECT Student.RegistrationNumber,CONCAT(Student.FirstName,' ',Student.LastName) 'Student Name',Clo.Name 'CLO ',CAST((SUM(((CAST(RL1.MeasurementLevel as FLOAT) * CAST(ACA.TotalMarks as FLOAT))/CAST(R1.[Maximum Level] as FLOAT))) / SUM(ACA.TotalMarks)) * 100 AS DECIMAL(16,2))'Percentage' 
+FROM 
+	(SELECT A.Id 'AssessmentID',AC.Id 'AssessmentComponentId',MAX(RL.MeasurementLevel) 'Maximum Level'
+	FROM Assessment A 
+	INNER JOIN AssessmentComponent AS AC ON A.Id = AC.AssessmentId 
+	INNER JOIN RubricLevel AS RL ON RL.RubricId = AC.RubricId 
+	GROUP BY A.Id,AC.Id) AS R1 
 
-SELECT
-    TT.StudentName,
-    TT.Assessment,
-    SUM(TT.[Obtained Marks]) AS ObtainedTotal,
-    CAST((SUM(TT.[Obtained Marks]) * TT.TotalWeightage / SUM(TT.TotalMarks)) AS DECIMAL(16, 2)) AS WeightedMarks
-FROM
-    (SELECT
-        --CONCAT(S.FirstName, ' ', S.LastName) AS StudentName,
-        CONCAT(C.Id, '-', C.Name) AS [CLO Title],
-        CONVERT(DATE, SR.EvaluationDate) AS [Evaluation Date],
-        A.Title AS Assessment,
-        AC.Name AS Component,
-        AC.TotalMarks,
-        RL.MeasurementLevel AS [Examiners Measure],
-        (SELECT MAX(RLP.MeasurementLevel) FROM RubricLevel RLP WHERE RLP.RubricId = R.Id) AS [Max Measure],
-        CAST(((CAST(RL.MeasurementLevel AS FLOAT) / CAST((SELECT MAX(RLP.MeasurementLevel) FROM RubricLevel RLP WHERE RLP.RubricId = R.Id) AS FLOAT))) * CAST(AC.TotalMarks AS FLOAT) AS DECIMAL(16, 2)) AS [Obtained Marks],
-        A.TotalWeightage
-    FROM
-        Assessment A
-		JOIN Student S ON S.Id = A.Id
-        JOIN AssessmentComponent AC ON AC.AssessmentId = A.Id
-        JOIN StudentResult SR ON SR.AssessmentComponentId = AC.Id
-        JOIN RubricLevel RL ON SR.RubricMeasurementId = RL.Id
-        JOIN Rubric R ON RL.RubricId = R.Id
-        JOIN Clo C ON R.CloId = C.Id
-    GROUP BY
-        A.Title,
-        SR.StudentID,
-        AC.Name,
-        AC.TotalMarks,
-        RL.Id,
-        RL.MeasurementLevel,
-        SR.RubricMeasurementId,
-        R.Id,
-        C.Name,
-        C.Id,
-        SR.EvaluationDate,
-        A.TotalWeightage) TT
-GROUP BY
-    --TT.StudentName,
-    TT.Assessment,
-    TT.TotalWeightage;
+JOIN StudentResult ON R1.AssessmentComponentId = StudentResult.AssessmentComponentId 
+JOIN AssessmentComponent AS ACA ON R1.AssessmentComponentId = ACA.Id 
+JOIN RubricLevel AS RL1 ON StudentResult.RubricMeasurementId = RL1.Id 
+JOIN Assessment ON Assessment.Id = R1.AssessmentID 
+JOIN Student ON Student.Id = StudentResult.StudentId 
+JOIN Rubric ON Rubric.Id = RL1.RubricId 
+JOIN Clo ON Rubric.CloId = Clo.Id 
+GROUP BY Student.RegistrationNumber,Clo.Name,Student.FirstName,Student.LastName
 
-BACKUP DATABASE tempdb
-TO DISK = 'C:\Users\HP\Desktop'
-WITH FORMAT, NAME = 'Full Database Backup';
+
+
+--TO FIND THE ATTENDANCE REPORT
+SELECT stu.RegistrationNumber, T1.[Total Presents], T1.[Total Classes Entered], T1.[Percentage Attendance]
+FROM (
+SELECT (SELECT RegistrationNumber FROM Student WHERE Id=S.Id)'Registration Number',
+COUNT(*) 'Total Presents', 
+	(SELECT COUNT(*)
+	FROM (SELECT COUNT(*) T
+		  FROM ClassAttendance CAT 
+		  JOIN StudentAttendance SAT 
+		  ON CAT.Id=SAT.AttendanceId 
+		  GROUP BY CAT.Id) AS TEMP ) 'Total Classes Entered',
+CAST((CAST(COUNT(*)  AS DECIMAL(16,2)) / CAST( (SELECT COUNT(*) FROM (SELECT COUNT(*) T FROM ClassAttendance CAT JOIN StudentAttendance SAT ON CAT.Id=SAT.AttendanceId GROUP BY CAT.Id)T) AS numeric(16,2)) * 100 ) as numeric(16, 2)) AS 'Percentage Attendance'
+FROM StudentAttendance SA
+JOIN Student S
+ON S.Id=SA.StudentId
+GROUP BY S.Id ) T1
+JOIN Student stu
+ON stu.RegistrationNumber = T1.[Registration Number]
+WHERE stu.Status = 5
+
+
+
+
+
+SELECT CAT.Id FROM ClassAttendance CAT JOIN StudentAttendance SAT ON CAT.Id=SAT.AttendanceId GROUP BY CAT.Id
+SELECT * FROM ClassAttendance CAT JOIN StudentAttendance SAT ON CAT.Id=SAT.AttendanceId

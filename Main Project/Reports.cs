@@ -49,7 +49,7 @@ namespace Main_Project
             if (chkActive.Checked || chkInActive.Checked)
             {
                 // Take the file Name from the User
-                string fileName = PdfGenerator.ShowInputDialog("Enter a valid file name(Add .pdf at end)(-1 to terminate): ");
+                string fileName = PdfGenerator.ShowInputDialog();
                 if (fileName == "-1")
                 {
                     return;
@@ -59,7 +59,7 @@ namespace Main_Project
                     while (string.IsNullOrEmpty(fileName) || !fileName.EndsWith(".pdf"))
                     {
                         MessageBox.Show("Enter a Valid File Name!!!");
-                        fileName = PdfGenerator.ShowInputDialog("Enter a valid file name(Add .pdf at end)(-1 to terminate): ");
+                        fileName = PdfGenerator.ShowInputDialog();
                         if (fileName == "-1")
                         {
                             return;
@@ -103,7 +103,26 @@ namespace Main_Project
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dataTable = new DataTable();
                 da.Fill(dataTable);
-                PdfGenerator.PrintDataToDocument(dataTable, "report.pdf", $"Attendance of {selectedDate}");
+
+                string fileName = PdfGenerator.ShowInputDialog();
+                if (fileName == "-1")
+                {
+                    return;
+                }
+                if (string.IsNullOrEmpty(fileName) || !fileName.EndsWith(".pdf"))
+                {
+                    while (string.IsNullOrEmpty(fileName) || !fileName.EndsWith(".pdf"))
+                    {
+                        MessageBox.Show("Enter a Valid File Name!!!");
+                        fileName = PdfGenerator.ShowInputDialog();
+                        if (fileName == "-1")
+                        {
+                            return;
+                        }
+                    }
+                }
+
+                PdfGenerator.PrintDataToDocument(dataTable, fileName, $"Attendance of {selectedDate}");
             }
             else
             {
@@ -122,12 +141,61 @@ namespace Main_Project
             da.Fill(dataTable);
             if (dataTable.Rows.Count > 0)
             {
-                PdfGenerator.PrintDataToDocument(dataTable, "report.pdf", $"Attendance of {value}");
+                string fileName = PdfGenerator.ShowInputDialog();
+                if (fileName == "-1")
+                {
+                    return;
+                }
+                if (string.IsNullOrEmpty(fileName) || !fileName.EndsWith(".pdf"))
+                {
+                    while (string.IsNullOrEmpty(fileName) || !fileName.EndsWith(".pdf"))
+                    {
+                        MessageBox.Show("Enter a Valid File Name!!!");
+                        fileName = PdfGenerator.ShowInputDialog();
+                        if (fileName == "-1")
+                        {
+                            return;
+                        }
+                    }
+                }
+                PdfGenerator.PrintDataToDocument(dataTable, fileName, $"Attendance of {value}");
             }
             else
             {
                 MessageBox.Show("No Attendance is marked for this Student!!!");
             }
+        }
+
+        private void btnPercentageAttendance_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT stu.RegistrationNumber, T1.[Total Presents], T1.[Total Classes Entered], T1.[Percentage Attendance]" +
+                           "FROM (SELECT (SELECT RegistrationNumber FROM Student WHERE Id=S.Id)'Registration Number', COUNT(*) 'Total Presents', " +
+                           "(SELECT COUNT(*) FROM (SELECT COUNT(*) T FROM ClassAttendance CAT JOIN StudentAttendance SAT ON CAT.Id=SAT.AttendanceId GROUP BY CAT.Id) AS TEMP ) 'Total Classes Entered', " +
+                           "CAST((CAST(COUNT(*)  AS DECIMAL(16,2)) / CAST( (SELECT COUNT(*) FROM (SELECT COUNT(*) T FROM ClassAttendance CAT JOIN StudentAttendance SAT ON CAT.Id=SAT.AttendanceId GROUP BY CAT.Id)T) AS numeric(16,2)) * 100 ) as numeric(16, 2)) AS 'Percentage Attendance' " +
+                           "FROM StudentAttendance SA JOIN Student S ON S.Id=SA.StudentId GROUP BY S.Id ) T1 JOIN Student stu ON stu.RegistrationNumber = T1.[Registration Number] WHERE stu.Status = 5";
+            var con = Configuration.getInstance().getConnection();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            string fileName = PdfGenerator.ShowInputDialog();
+            if (fileName == "-1")
+            {
+                return;
+            }
+            if (string.IsNullOrEmpty(fileName) || !fileName.EndsWith(".pdf"))
+            {
+                while (string.IsNullOrEmpty(fileName) || !fileName.EndsWith(".pdf"))
+                {
+                    MessageBox.Show("Enter a Valid File Name!!!");
+                    fileName = PdfGenerator.ShowInputDialog();
+                    if (fileName == "-1")
+                    {
+                        return;
+                    }
+                }
+            }
+            PdfGenerator.PrintDataToDocument(dataTable, fileName, "Attendance %age of All Students!!!");
         }
     }
 }

@@ -39,6 +39,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnSpecificStudent = new System.Windows.Forms.Button();
+            this.btnPercentageAttendance = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -154,11 +156,34 @@
             this.btnSpecificStudent.UseVisualStyleBackColor = true;
             this.btnSpecificStudent.Click += new System.EventHandler(this.btnSpecificStudent_Click);
             // 
+            // btnPercentageAttendance
+            // 
+            this.btnPercentageAttendance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPercentageAttendance.Location = new System.Drawing.Point(702, 295);
+            this.btnPercentageAttendance.Name = "btnPercentageAttendance";
+            this.btnPercentageAttendance.Size = new System.Drawing.Size(130, 41);
+            this.btnPercentageAttendance.TabIndex = 13;
+            this.btnPercentageAttendance.Text = "Print";
+            this.btnPercentageAttendance.UseVisualStyleBackColor = true;
+            this.btnPercentageAttendance.Click += new System.EventHandler(this.btnPercentageAttendance_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(59, 305);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(557, 25);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Print the Percentage Attendance Report of all Active Students...";
+            // 
             // Reports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Controls.Add(this.btnPercentageAttendance);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnSpecificStudent);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label4);
@@ -190,5 +215,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btnSpecificStudent;
+        private System.Windows.Forms.Button btnPercentageAttendance;
+        private System.Windows.Forms.Label label5;
     }
 }

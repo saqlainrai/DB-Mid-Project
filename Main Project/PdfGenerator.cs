@@ -82,8 +82,9 @@ namespace Main_Project
                 MessageBox.Show(exception.Message);
             }
         }
-        public static string ShowInputDialog(string prompt)
+        public static string ShowInputDialog()
         {
+            string prompt = "Enter a valid file name(Add .pdf at end)(-1 to terminate): ";
             Form promptForm = new Form()
             {
                 Width = 500,

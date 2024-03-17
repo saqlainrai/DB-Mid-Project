@@ -22,7 +22,7 @@ Mr. Nazeef Ul Haq
 - [Instructions to Run the Program](#instructions-to-run-the-program)
 - [Features](#features)
 - [Data Structure](#data-structure)
-- [Packages](#packages)
+- [System Requirements](#system-requirements)
 - [Paths](#paths)
 - [Documnetation](#documnetation)
 - [Terms and Conditions](#terms-and-conditions)
@@ -36,9 +36,15 @@ Following are the some of key features of the program
 ### Data Structure
 
 
-### Packages
-Following packages are required to run this program
+### System Requirements
+Following are the system requirement to run this program
 
+| Programming Language  | C#                                                           |
+| --------------------- | ------------------------------------------------------------ |
+| IDE                   | Visual Studio 2022                                           |
+| Framework             | .NET 4.7.2                                                   |
+| External Dependencies | - BouncyCastle 2.3.0 (Cryptography)                          |
+|                       | - iText7 8.0.3 (.Net Platform)                               |
 
 ### Paths
 No system depended paths are used. All paths are relative.💫

@@ -94,3 +94,4 @@ C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\BouncyCastle.Cryptography
 C:\Users\HP\Desktop\Mid Project\Main Project\bin\Debug\itext.bouncy-castle-adapter.xml
 C:\Users\HP\Desktop\Mid Project\Main Project\obj\Debug\Main_Project.Reports.resources
 C:\Users\HP\Desktop\Mid Project\Main Project\obj\Debug\Main_Project.Rubrics.resources
+C:\Users\HP\Desktop\Mid Project\Main Project\obj\Debug\Main_Project.QueryCompiler.resources

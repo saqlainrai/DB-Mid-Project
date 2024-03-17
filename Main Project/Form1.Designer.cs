@@ -34,6 +34,7 @@
             this.panelSide = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
+            this.btnRubrics = new System.Windows.Forms.Button();
             this.btnAttendance = new System.Windows.Forms.Button();
             this.btnAddAssessment = new System.Windows.Forms.Button();
             this.btnAssessment = new System.Windows.Forms.Button();
@@ -47,7 +48,7 @@
             this.btnStudent = new System.Windows.Forms.Button();
             this.panel_data = new System.Windows.Forms.Panel();
             this.btnMain = new System.Windows.Forms.Button();
-            this.btnRubrics = new System.Windows.Forms.Button();
+            this.btnName = new System.Windows.Forms.Button();
             this.panel_top.SuspendLayout();
             this.panelSide.SuspendLayout();
             this.SuspendLayout();
@@ -88,6 +89,7 @@
             // 
             this.panelSide.AutoScroll = true;
             this.panelSide.Controls.Add(this.btnExit);
+            this.panelSide.Controls.Add(this.btnName);
             this.panelSide.Controls.Add(this.btnReports);
             this.panelSide.Controls.Add(this.btnRubrics);
             this.panelSide.Controls.Add(this.btnAttendance);
@@ -112,7 +114,7 @@
             this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnExit.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Location = new System.Drawing.Point(0, 650);
+            this.btnExit.Location = new System.Drawing.Point(0, 700);
             this.btnExit.Margin = new System.Windows.Forms.Padding(0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(242, 50);
@@ -137,6 +139,22 @@
             this.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReports.UseVisualStyleBackColor = false;
             this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
+            // 
+            // btnRubrics
+            // 
+            this.btnRubrics.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnRubrics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnRubrics.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRubrics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRubrics.Location = new System.Drawing.Point(0, 550);
+            this.btnRubrics.Margin = new System.Windows.Forms.Padding(0);
+            this.btnRubrics.Name = "btnRubrics";
+            this.btnRubrics.Size = new System.Drawing.Size(242, 50);
+            this.btnRubrics.TabIndex = 14;
+            this.btnRubrics.Text = "Rubrics";
+            this.btnRubrics.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRubrics.UseVisualStyleBackColor = false;
+            this.btnRubrics.Click += new System.EventHandler(this.btnRubrics_Click);
             // 
             // btnAttendance
             // 
@@ -317,21 +335,21 @@
             this.btnMain.UseVisualStyleBackColor = false;
             this.btnMain.Click += new System.EventHandler(this.btnMain_Click);
             // 
-            // btnRubrics
+            // btnName
             // 
-            this.btnRubrics.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnRubrics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnRubrics.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRubrics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRubrics.Location = new System.Drawing.Point(0, 550);
-            this.btnRubrics.Margin = new System.Windows.Forms.Padding(0);
-            this.btnRubrics.Name = "btnRubrics";
-            this.btnRubrics.Size = new System.Drawing.Size(242, 50);
-            this.btnRubrics.TabIndex = 14;
-            this.btnRubrics.Text = "Rubrics";
-            this.btnRubrics.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRubrics.UseVisualStyleBackColor = false;
-            this.btnRubrics.Click += new System.EventHandler(this.btnRubrics_Click);
+            this.btnName.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnName.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnName.Location = new System.Drawing.Point(0, 650);
+            this.btnName.Margin = new System.Windows.Forms.Padding(0);
+            this.btnName.Name = "btnName";
+            this.btnName.Size = new System.Drawing.Size(242, 50);
+            this.btnName.TabIndex = 15;
+            this.btnName.Text = "Query Compiler";
+            this.btnName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnName.UseVisualStyleBackColor = false;
+            this.btnName.Click += new System.EventHandler(this.btnName_Click);
             // 
             // Form1
             // 
@@ -373,6 +391,7 @@
         private System.Windows.Forms.Button btnMain;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnRubrics;
+        private System.Windows.Forms.Button btnName;
     }
 }
 

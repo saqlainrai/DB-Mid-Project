@@ -163,5 +163,10 @@ namespace Main_Project
         {
             DisplayForm(new Rubrics());
         }
+
+        private void btnName_Click(object sender, EventArgs e)
+        {
+            DisplayForm(new QueryCompiler());
+        }
     }
 }
