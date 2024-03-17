@@ -1,4 +1,4 @@
-![image](image.jpg)
+
 <div align="center">
   <h2> CS-262L Database Systems </h2>
   <h3> Mid Project </h3>
@@ -21,19 +21,27 @@ Mr. Nazeef Ul Haq
 - [Table Of Contents](#table-of-contents)
 - [Instructions to Run the Program](#instructions-to-run-the-program)
 - [Features](#features)
-- [Data Structure](#data-structure)
 - [System Requirements](#system-requirements)
 - [Paths](#paths)
 - [Documnetation](#documnetation)
 - [Terms and Conditions](#terms-and-conditions)
 
 ### Instructions to Run the Program
+Following are some instruction to run the program
+- Clone the repository
+- Move to the file through this path <br>
+``` \Mid Project\Main Project\bin\Debug\Main Project.exe```
+- Execute the .exe file.
 
 ### Features
-Following are the some of key features of the program
-
-
-### Data Structure
+This program is designed for a single user. Following are some of the key features
+and functionalities of this program. It allows user to:
+1. Manage Students
+2. Manage Assessments
+3. Manage Assessment Components
+4. Manage Rubrics
+5. Manage Course Learning Outcomes(CLOs)
+6. Manage Student Attendances
 
 
 ### System Requirements
